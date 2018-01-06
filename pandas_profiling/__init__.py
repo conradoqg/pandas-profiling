@@ -27,7 +27,11 @@ class ProfileReport(object):
         Number of bins in histogram
     check_correlation : boolean
         Whether or not to check correlation.
-        Since it's an expensive computation it can be deactivated for big datasets.
+    check_recoded : boolean
+        Whether or not to check recoded correlation (memory heavy feature) (check_correlation must be true to disable this check)
+        Since it's an expensive computation it can be activated for small datasets.
+    correlation_threshold: float
+        Threshold to determine if the variable pair is correlated
     correlation_overrides : list
         Variable names not to be rejected because they are correlated
     pool_size : int

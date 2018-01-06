@@ -281,7 +281,7 @@ def describe_1d(data, **kwargs):
 def multiprocess_func(x, **kwargs):
     return x[0], describe_1d(x[1], **kwargs)
 
-def describe(df, bins=10, check_correlation=True, check_recoded=True, correlation_threshold=0.9, correlation_overrides=None, pool_size=multiprocessing.cpu_count(), **kwargs):
+def describe(df, bins=10, check_correlation=True, check_recoded=False, correlation_threshold=0.9, correlation_overrides=None, pool_size=multiprocessing.cpu_count(), **kwargs):
     """Generates a dict containing summary statistics for a given dataset stored as a pandas `DataFrame`.
 
     Used has is it will output its content as an HTML report in a Jupyter notebook.
@@ -296,6 +296,7 @@ def describe(df, bins=10, check_correlation=True, check_recoded=True, correlatio
         Whether or not to check correlation
     check_recoded : boolean
         Whether or not to check recoded correlation (memory heavy feature) (check_correlation must be true to disable this check)
+        Since it's an expensive computation it can be activated for small datasets.
     correlation_threshold: float
         Threshold to determine if the variable pair is correlated
     correlation_overrides : list
